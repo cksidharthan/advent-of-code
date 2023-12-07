@@ -16,4 +16,7 @@ func main() {
 
 	result = advent2023.Day02PartOne(false, 12, 14, 13)
 	fmt.Println("Advent 2023 - Day 02 - Part 01 - Result: ", result)
+
+	result = advent2023.Day02PartTwo(false)
+	fmt.Println("Advent 2023 - Day 02 - Part 02 - Result: ", result)
 }
