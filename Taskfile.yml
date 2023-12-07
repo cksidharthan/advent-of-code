@@ -3,4 +3,8 @@ version: '3'
 tasks:
   test:
     cmds:
-      - 
+      - go test ./...
+
+  run:
+    cmds:
+      - go run main.go
