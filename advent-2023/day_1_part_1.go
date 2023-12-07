@@ -5,14 +5,14 @@ import (
 	"log"
 )
 
-func Day01PartOne(test bool) {
+func Day01PartOne(test bool) int {
 	var file string
 	var err error
 
 	if test {
-		file, err = elf.GetInputFile(true, 1, 1)
+		file, err = elf.GetInputFile(true, 2023, 1, 1)
 	} else {
-		file, err = elf.GetInputFile(false, 1, 1)
+		file, err = elf.GetInputFile(false, 2023, 1, 1)
 	}
 
 	if err != nil {
@@ -36,8 +36,7 @@ func Day01PartOne(test bool) {
 		sum += num
 	}
 
-	// print the sum
-	log.Printf("Result - Day 1 Part 1: %d", sum)
+	return sum
 }
 
 func getIntegersFromString(line string) string {

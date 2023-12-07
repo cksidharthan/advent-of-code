@@ -6,17 +6,26 @@ import (
 	"strconv"
 )
 
-func GetInputFile(test bool, day, part int) (string, error) {
-	// get the root of the project
-	root, err := os.Getwd()
-	if err != nil {
-		return "", err
-	}
-
+func GetInputFile(test bool, year, day, part int) (string, error) {
 	if test {
-		return fmt.Sprintf("%s/testfiles/day_%d_part_%d_test.txt", root, day, part), nil
+		// get the root of the project
+		err := os.Chdir("..")
+		if err != nil {
+			return "", err
+		}
+		root, err := os.Getwd()
+		if err != nil {
+			return "", err
+		}
+
+		return fmt.Sprintf("%s/advent-%d/testfiles/day_%d_part_%d_test.txt", root, year, day, part), nil
 	} else {
-		return fmt.Sprintf("%s/testfiles/day_%d_part_%d.txt", root, day, part), nil
+		root, err := os.Getwd()
+		if err != nil {
+			return "", err
+		}
+
+		return fmt.Sprintf("%s/advent-%d/testfiles/day_%d_part_%d.txt", root, year, day, part), nil
 	}
 }
 
