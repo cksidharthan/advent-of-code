@@ -7,6 +7,10 @@ import (
 
 func main() {
 	fmt.Println("Advent of Code!")
+
 	result := advent2023.Day01PartOne(false)
 	fmt.Println("Advent 2023 - Day 01 - Part 01 - Result: ", result)
+
+	result = advent2023.Day01PartTwo(false)
+	fmt.Println("Advent 2023 - Day 01 - Part 02 - Result: ", result)
 }
