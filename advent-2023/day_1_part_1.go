@@ -9,11 +9,7 @@ func Day01PartOne(test bool) int {
 	var file string
 	var err error
 
-	if test {
-		file, err = elf.GetInputFile(true, 2023, 1, 1)
-	} else {
-		file, err = elf.GetInputFile(false, 2023, 1, 1)
-	}
+	file, err = elf.GetInputFile(test, 2023, 1, 1)
 
 	if err != nil {
 		log.Fatal(err)

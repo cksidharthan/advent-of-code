@@ -1,7 +1,9 @@
 package elf
 
 import (
+	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 )
@@ -21,17 +23,7 @@ var DigitsMap = map[string]int{
 
 func GetInputFile(test bool, year, day, part int) (string, error) {
 	if test {
-		// get the root of the project
-		err := os.Chdir("..")
-		if err != nil {
-			return "", err
-		}
-		root, err := os.Getwd()
-		if err != nil {
-			return "", err
-		}
-
-		return fmt.Sprintf("%s/advent-%d/testfiles/day_%d_part_%d_test.txt", root, year, day, part), nil
+		return fmt.Sprintf("testfiles/day_%d_part_%d_test.txt", day, part), nil
 	} else {
 		root, err := os.Getwd()
 		if err != nil {
@@ -51,13 +43,15 @@ func GetContentsFromFile(filePath string) ([]string, error) {
 	defer file.Close()
 
 	var contents []string
-	for {
-		var line string
-		_, err := fmt.Fscanf(file, "%s\n", &line)
-		if err != nil {
-			break
-		}
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
 		contents = append(contents, line)
+	}
+
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
 	}
 
 	return contents, nil
